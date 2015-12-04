@@ -13,8 +13,6 @@ facebookChatAPI(creds.FACEBOOK_CRED, function callback (err, api) {
             content = message.body.substring(5);
             if (content.length <= TWEET_LENGTH) {
                 client.post('statuses/update', {status: content}, function(error, tweet, response){
-                    console.log(content);
-                    console.log(error);
                     if (!error) {
                         api.sendMessage('@' + tweet.user.screen_name + ': ' + tweet.text, message.threadID);
                     }
